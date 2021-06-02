@@ -1,46 +1,23 @@
 import React from 'react'
 
-const Food= () =>{
+const Food= (props) =>{
+    const{foodlist} = props;
+    console.log(foodlist)
 
-    const foodList = [
-            {
-                name: 'rice',
-                price: '$45',
-            },
-            {
-                name: 'Beans',
-                price: '$95',
-            },
-            {
-                name: 'spagehtti',
-                price: '$145',
-            },
-            {
-                name: 'goat meat pepper soup',
-                price: '$25,000',
-            },
-            {
-                name: 'jollof rice',
-                price: '$30',
-            },
-            {
-                name: 'melon soup',
-                price: '$45',
-            },
-    ]
-
-    const food = foodList.map ((element)=>{
-        return(
-            <div>
-                <p>Name: {element.name}</p>
-                <p>Price: {element.price}</p>
+    const newflist =foodlist.map((element, id) =>{
+        return (
+            <div key={id}>
+                <p>name: {element.name}</p>
+                <p>price: {element.price}</p>
             </div>
         )
-    });
+    })
+
+
     return (
         <div>
             <h1>My food List 🍱</h1>
-            <div className="d-flex">{food}</div>
+            <h4 className="d-flex">{newflist}</h4>
         </div>
     )
 }
