@@ -2,6 +2,7 @@ import Cars from './components/Cars';
 import Food from './components/Food';
 import Phone from './components/Phone'
 import Profile from './components/Profile'
+import FormElement from './components/FormElement'
 import './App.css';
 
 
@@ -16,27 +17,27 @@ function App() {
     carList: [
       {
         name: 'Rolls Royce',
-        model: 'Sweptail'
+        type: 'Sweptail'
       },
       {
         name: 'Mercedes Benz',
-        model: 'G33',
+        type: 'G33',
       },
       {
         name: 'Bentley',
-        model: 'Bentayga',
+        type: 'Bentayga',
       },
       {
         name: 'BMW',
-        model: 'inext',
+        type: 'inext',
       },
       {
         name: 'Lamborghini',
-        model: 'Urus',
+        type: 'Urus',
       },
       {
         name: 'Porche',
-        model: '911',
+        type: '911',
       },
     ]
   }
@@ -119,6 +120,15 @@ function App() {
 
       <Profile firstname ="Jane" lastname="Doe" age={29} hobbies = {['Singing', 'reading', 'trying outfits']} className = "bg-blue"/>
       </div>
+
+      <FormElement type ="password" placeholder="enter your password"/>
+      <FormElement type ="email" placeholder="email"/>
+      <FormElement type ="text" placeholder="enter your text"/>
+      <FormElement type ="button" value="my test button"/>
+      <FormElement type ="submit" value="my submit button"/>
+      <FormElement type ="reset" value="my reset button"/>
+      <FormElement type ="range"/>
+      <FormElement type ="color"/>
     </div>
     
   );
