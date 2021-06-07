@@ -1,77 +1,64 @@
-import React from 'react'
-import FormElement from './components/FormElement';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios'
+import Home from './components/Home'
+import Products from './components/Products'
+import {Link, Route} from 'react-router-dom'
+import Posts from './components/Posts'
 
-class App extends React.Component {
-  constructor() {
+
+
+class App extends React.Component{
+  constructor(){
     super();
+
     this.state = {
-      show: true,
-      text:'',
-    };
+      posts: [],
+      err: {},
+    }
   }
 
-  handleChange = (e) =>{
-    this.setState({
-      text: e.target.value
-    });
-  }
-  handleClick = (e)=> {
-    /* code to change the value of the button from true to false */ 
-
-    if (this.state.show === false) {
-      this.setState({
-
-        show: true,
-      });
-    } else {
-      this.setState({
-        show: false,
-      });
-    
-    };
+  componentDidMount(){
+    axios
+    .get('https://jsonplaceholder.typicode.com.posts/')
+    .then((response)=> {
+        this.setState({
+          post: response.data,
+        });
+    })
+    .catch((err)=> {
+        this.setState({
+          err: err.response,
+        })
+    })
   }
 
   render() {
-
     return (
       <div>
-        <h1>Hello React</h1>
-
-
-        <button type="button" onClick={this.handleClick}> {/*calls the onClick function in the handleClick variable declared up */}
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/products">Products</Link>
+          </li>
+          <li>
+            <Link to="/post">Posts</Link>
+          </li>
+        </ul>
         
-          Toggle button
-          </button>
-        
-          {this.state.show &&(
-            <div style={{ width: '400px', height: '400px', backgroundColor: 'green' }}>
-            </div>
-      
-          )}
 
-        <h1>Text: {this.state.text}</h1>
-        
-        {/* <input
-        type = "text"
-        placeholder = "enter your text"
-        value = "this.state.text"
-        onChange = {this.handleChange}
-        /> */}
-
-        <FormElement
-          type="text"
-          placeholder="enter your text"
-          value={this.state.text}
-          onChange={this.handleChange}
-        />
-         
-        
-       
-
-        
+       <Route path="/" exact component={Home}/>
+       <Route path ="/products" component={Products}/>
+       <Route path="/post" render={(routerProps)=>(
+         <Posts {...routerProps} posts={this.state.posts}/>
+       )}/>
       </div>
-    );
+    )
   }
 }
 
-export default App
+
+
+export default App;
