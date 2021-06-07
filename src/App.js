@@ -1,137 +1,77 @@
-import Cars from './components/Cars';
-import Food from './components/Food';
-import Phone from './components/Phone'
-import Profile from './components/Profile'
-import FormElement from './components/FormElement'
-import './App.css';
+import React from 'react'
+import FormElement from './components/FormElement';
 
-
-
-function App() {
-  // <div>
-  //   <Food />
-  //   <Phone/>
-  // </div>
-  
-  const data = {
-    carList: [
-      {
-        name: 'Rolls Royce',
-        type: 'Sweptail'
-      },
-      {
-        name: 'Mercedes Benz',
-        type: 'G33',
-      },
-      {
-        name: 'Bentley',
-        type: 'Bentayga',
-      },
-      {
-        name: 'BMW',
-        type: 'inext',
-      },
-      {
-        name: 'Lamborghini',
-        type: 'Urus',
-      },
-      {
-        name: 'Porche',
-        type: '911',
-      },
-    ]
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      show: true,
+      text:'',
+    };
   }
 
-  const foodData = {
-    foodList: [
-        {
-          name: 'rice',
-          price: '$45',
-        },
-        {
-          name: 'Beans',
-          price: '$95',
-        },
-        {
-          name: 'spagehtti',
-          price: '$145',
-        },
-        {
-          name: 'goat meat pepper soup',
-          price: '$25,000',
-        },
-        {
-          name: 'jollof rice',
-          price: '$30',
-        },
-        {
-          name: 'melon soup',
-          price: '$45',
-        },
-      ]
-
+  handleChange = (e) =>{
+    this.setState({
+      text: e.target.value
+    });
   }
-  const phoneData = {
-    phoneList : [
-      {
-        name: 'Samsung A11',
-        quantity: 34,
-        price: '$50'
-      },
-      {
-        name: 'Itel p33 pro',
-        quantity: 100,
-        price: '$25'
-      },
-      {
-        name: 'Iphone 12 S pro',
-        quantity: 13,
-        price: '$900',
-      },
+  handleClick = (e)=> {
+    /* code to change the value of the button from true to false */ 
 
-      {
-        name: 'Phone 1',
-        quantity: 34,
-        price: '$400',
-      },
-      {
-        name: 'Phone 2',
-        quantity: 100,
-        price: '$600',
-      },
-      {
-        name: 'Phone 3',
-        quantity: 13,
-        price: '$300'
-      },
-    ]
-  }
+    if (this.state.show === false) {
+      this.setState({
 
-  return (
-  
-  <div>
-      <Cars list = {data.carList} />
-      <Food foodlist = {foodData.foodList}/>
-      <Phone phonelist = {phoneData.phoneList}/>
-
-
-      <div className = "d-flex">
-      <Profile firstname ="John" lastname="Doe" age={25} hobbies = {['reading', 'watching movies', 'playing football']} className = "bg-red"/>
-
-      <Profile firstname ="Jane" lastname="Doe" age={29} hobbies = {['Singing', 'reading', 'trying outfits']} className = "bg-blue"/>
-      </div>
-
-      <FormElement type ="password" placeholder="enter your password"/>
-      <FormElement type ="email" placeholder="email"/>
-      <FormElement type ="text" placeholder="enter your text"/>
-      <FormElement type ="button" value="my test button"/>
-      <FormElement type ="submit" value="my submit button"/>
-      <FormElement type ="reset" value="my reset button"/>
-      <FormElement type ="range"/>
-      <FormElement type ="color"/>
-    </div>
+        show: true,
+      });
+    } else {
+      this.setState({
+        show: false,
+      });
     
-  );
+    };
+  }
+
+  render() {
+
+    return (
+      <div>
+        <h1>Hello React</h1>
+
+
+        <button type="button" onClick={this.handleClick}> {/*calls the onClick function in the handleClick variable declared up */}
+        
+          Toggle button
+          </button>
+        
+          {this.state.show &&(
+            <div style={{ width: '400px', height: '400px', backgroundColor: 'green' }}>
+            </div>
+      
+          )}
+
+        <h1>Text: {this.state.text}</h1>
+        
+        {/* <input
+        type = "text"
+        placeholder = "enter your text"
+        value = "this.state.text"
+        onChange = {this.handleChange}
+        /> */}
+
+        <FormElement
+          type="text"
+          placeholder="enter your text"
+          value={this.state.text}
+          onChange={this.handleChange}
+        />
+         
+        
+       
+
+        
+      </div>
+    );
+  }
 }
 
-export default App;
+export default App
