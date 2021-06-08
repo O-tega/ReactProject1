@@ -7,13 +7,25 @@ class App extends React.Component {
     this.state = {
       show: true,
       text:'',
+      email:'',
     };
   }
 
   handleChange = (e) =>{
+    // if(){
+    //     this.setState({
+    //     email: e.target.value
+    //     });
+    //   }else if(this.state.text != ''){
+    //     this.setState({
+    //       text: e.target.value
+    //     });
+    //   };
     this.setState({
-      text: e.target.value
+      text: e.target.value,
+      email: e.target.value
     });
+    
   }
   handleClick = (e)=> {
     /* code to change the value of the button from true to false */ 
@@ -63,9 +75,17 @@ class App extends React.Component {
           placeholder="enter your text"
           value={this.state.text}
           onChange={this.handleChange}
-        />
+        /><br/>
          
+        <FormElement type="button" name="Submit" value="submit"/><br/>    
         
+        <h1>email test: {this.state.email}</h1>
+        <FormElement 
+        type="email"
+        placeholder="enter your email here"
+        value={this.state.email} 
+        onChange={this.handleChange}
+        />
        
 
         
