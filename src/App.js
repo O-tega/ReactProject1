@@ -8,3 +8,15 @@ import Posts from './components/Posts'
 
 
 
+class App extends React.Component{
+  constructor(){
+    super();
+
+    this.state={
+
+    }
+  }
+}
+
+
+export default App;
