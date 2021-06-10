@@ -1,31 +1,28 @@
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Forms from './Forms'
+
 
 
 class Cars extends React.Component{
     constructor(){
         super();
         this.state = {
-            phonesList: [
+            carList: [
                 {
-                    name: 'Samsung A11',
-                    quantity: 34,
-                    date: 'wed May 19 2021 2:08pm',
-                    price: '$50'
+                    name: 'Rolls Royce',
+                    type: 'Sweptail'
                 },
                 {
-                    name: 'Itel p33 pro',
-                    quantity: 100,
-                    date: 'wed May 20 2021 8:00am',
-                    price: '$25'
+                    name: 'Mercedes Benz',
+                    type: 'G33',
                 },
                 {
-                    name: 'Iphone 12 S pro',
-                    quantity: 13,
-                    date: 'wed May 1 2021 8:00am',
-                    price: '$900',
-                }
-            ],
+                    name: 'Bentley',
+                    type: 'Bentayga',
+                },
+            ]
+
 
     }
 }
@@ -39,17 +36,18 @@ class Cars extends React.Component{
     }
     
     render(){
-        let {cars} = this.props;
+        // let {cars} = this.props;
+        let {carList} = this.state
         return(
             <div>
                 <h1>This is the cars list</h1>
-                {cars.map((car, carid)=>{
+                {carList.map((car, carid)=>{
                     return(
                         <div key={carid}>
                             <p>name: {car.name}</p>
                             <p>type: {car.type}</p>
                         </div>
-                    )
+                    );
                 })}
 
                 <Forms addCars={this.addCars} /><br />

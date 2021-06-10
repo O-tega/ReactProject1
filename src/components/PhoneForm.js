@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import FormElement from './FormElement';
 
 class PhoneForm extends React.Component{

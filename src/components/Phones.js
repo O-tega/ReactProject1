@@ -1,5 +1,6 @@
 import React from 'react';
 import PhoneForm from './PhoneForm'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -7,20 +8,27 @@ class Phones extends React.Component {
     constructor() {
         super();
         this.state={
-            carList: [
+       
+            phonesList: [
                 {
-                    name: 'Rolls Royce',
-                    type: 'Sweptail'
+                    name: 'Samsung A11',
+                    quantity: 34,
+                    date: 'wed May 19 2021 2:08pm',
+                    price: '$50'
                 },
                 {
-                    name: 'Mercedes Benz',
-                    type: 'G33',
+                    name: 'Itel p33 pro',
+                    quantity: 100,
+                    date: 'wed May 20 2021 8:00am',
+                    price: '$25'
                 },
                 {
-                    name: 'Bentley',
-                    type: 'Bentayga',
-                },
-            ]
+                    name: 'Iphone 12 S pro',
+                    quantity: 13,
+                    date: 'wed May 1 2021 8:00am',
+                    price: '$900',
+                }
+            ],
 
         }
 
@@ -33,17 +41,19 @@ class Phones extends React.Component {
     }
 
     render(){
-        let {phones} = this.props;
+        // let {phones} = this.props;
+        let {phonesList} = this.state
         return(
             <div>
                 <h1>This is phones list</h1>
-                {phones.map((phone, phoneid)=>{
+                {phonesList.map((phone, phoneid)=>{
                    return(
                        <div key={phoneid}>
-                           <p>Name: {phone.name}</p>
-                           <p>Quantity: {phone.quantity}</p>
-                           <p>Date: {phone.date}</p>
-                           <p>Price: {phone.price}</p>
+                           <span><strong>Name:</strong> {phone.name}</span><br />
+                           <span><strong>Quantity:</strong> {phone.quantity}</span><br />
+                           <span><strong>Date:</strong> {phone.date}</span><br />
+                           <span><strong>Price:</strong> {phone.price}</span><br/>
+                           <br/>
                        </div>
                    ) 
                 })}

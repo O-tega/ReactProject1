@@ -29,7 +29,6 @@ class App extends React.Component{
             <Link to="phones"> Update Phones</Link>
           </li>
         </ul>
-        <h1>React Classwork</h1><br/><br/>
         
         
         <Route path="/" exact component={Home}/>
