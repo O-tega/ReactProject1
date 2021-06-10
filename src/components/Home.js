@@ -1,24 +1,27 @@
-import React, {Component} from 'react';
-import {Jumbotron, Col, Row} from 'react-bootstrap';
-import { Link, Route } from 'react-router-dom';
+import React from 'react';
+import {Link, Route} from 'react-router-dom';
+import Cars from './Cars'
+import Phones from './Phones'
 
-class Home extends Component{
+
+class Home extends React.Component{
     render(){
         return(
-            <div className="container-fluid bg-light p-5">
-                <Row className = "justify-content-center">
-                    <Col md={8}/>
-                        <Jumbotron>
-                        <h1>Home</h1>
-                        <p className = "lead">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A praesentium explicabo quod laboriosam reiciendis quam minima itaque, possimus dignissimos, deserunt ad blanditiis recusandae neque exercitationem, dolorem nesciunt alias ipsam quos.
-                        </p>
-                        <Link to="/product" className = "btn btn-outline-primary"> read more...</Link>
-                </Jumbotron>
-                </Row>
+            <div>
+                <ul>
+                    <li>
+                        <Link to="/cars">update Cars</Link>
+                    </li>
+                    <li>
+                        <Link to="/phones">update Phones</Link>
+                    </li>
+                </ul>
 
+
+                <Route path="/cars" Component={Cars}/>
+                <Route path="/phones" Component={Phones}/>
             </div>
-        );
+        )
     }
 }
 
