@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import axios from 'axios'
 import {Link, Route} from 'react-router-dom'
 import Posts from './components/Posts'
@@ -18,16 +19,18 @@ class App extends React.Component{
   render(){
     return(
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
+        <ul className="navBar bg-light">
+          <li className="navBar-item">
+            <Link to="/" className="btn btn-primary btn-sm">Home</Link>
           </li>
-          <li>
-            <Link to="/cars">Update cars</Link>
+          <span>
+          <li className="navBar-item">
+            <Link to="/cars" className="style">Update cars</Link>
           </li>
-          <li>
-            <Link to="phones"> Update Phones</Link>
+          <li className="navBar-item">
+            <Link to="phones" className="style"> Update Phones</Link>
           </li>
+          </span>
         </ul>
         
         

@@ -1,15 +1,48 @@
-.d-flex{
-  display:flex
+.card{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 200px;
+  margin: 5px 5px;
 }
-.d-flex > div{
-  border: 1px solid black;
-  margin: 5px;
-  padding: 10px
+.card:hover{
+  margin-top: 20px;
+  transition-duration: 0.2s;
 }
-.bg-red{
-  background-color: red;
+.btn{
+  display: inline-block;
+  /* margin: 10px ; */
 }
-.bg-blue{
-  background-color: blue;
-  
+.container1{
+  padding: 0 10px;
+}
+
+.header{
+  text-align: center;
+  background-color: rgb(7, 105, 233);
+  color: aliceblue;
+  border-radius: 5px;
+}
+.container-fluid{
+  justify-content: center;
+  margin: 5px 10px;
+  offset: 3;
+}
+.form-control{
+  margin: 5px 0;
+}
+.adjust{
+  text-align: center;
+  padding: 2px 0;
+}
+.navBabr{
+  display: inline-block;
+  padding: 10px;
+}
+.navBar-item{
+  display:inline-block;
+  padding: 0 10px;
+}
+.style{
+  text-align: right !important;
 }

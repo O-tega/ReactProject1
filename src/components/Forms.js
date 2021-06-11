@@ -1,44 +1,41 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { Form } from 'react-bootstrap';
 import FormElement from './FormElement';
 
 
-class Forms extends React.Component{
-    constructor(){
+class Forms extends React.Component {
+    constructor() {
         super();
-        this.state={
-            name:'',
-            type:'',
+        this.state = {
+            name: '',
+            type: '',
         }
     }
-    handleChange=(e)=>{
+    handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
         });
     };
-    handleSubmit=(e)=>{
+    handleSubmit = (e) => {
         e.preventDefault();
-        this.props.addCars(this.state); 
+        this.props.addCars(this.state);
         console.log(this.state)
 
     };
-    render(){
-        return(
+    render() {
+        return (
             <form onSubmit={this.handleSubmit}>
-                <FormElement type='text'
-                 placeholder='enter name'
-                 value={this.state.name}
-                 name="name"
-                 onChange={this.handleChange}/>
-                <br/>
-                <FormElement type='text'
-                 placeholder='type'
-                 value={this.state.type}
-                 name="type"
-                 onChange={this.handleChange}/>
-                <br/>
-                <FormElement type='submit' value='add new car'/>
+                <FormElement className='form-control' type='text'
+                    placeholder='enter name'
+                    value={this.state.name}
+                    name="name"
+                    onChange={this.handleChange} />
+                <FormElement className='form-control' type='text'
+                    placeholder='type'
+                    value={this.state.type}
+                    name="type"
+                    onChange={this.handleChange} />
+                <FormElement type='submit' value='add new car' className="btn btn-outline-primary" />
             </form>
         );
 

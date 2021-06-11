@@ -1,11 +1,11 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { Row, Col } from 'react-bootstrap'
 import Forms from './Forms'
 
 
 
-class Cars extends React.Component{
-    constructor(){
+class Cars extends React.Component {
+    constructor() {
         super();
         this.state = {
             carList: [
@@ -24,8 +24,8 @@ class Cars extends React.Component{
             ]
 
 
+        }
     }
-}
     addCars = (incomingState) => {
         let newCars = { ...incomingState }
         console.log(newCars)
@@ -34,23 +34,30 @@ class Cars extends React.Component{
         })
 
     }
-    
-    render(){
-        // let {cars} = this.props;
-        let {carList} = this.state
-        return(
-            <div>
-                <h1>This is the cars list</h1>
-                {carList.map((car, carid)=>{
-                    return(
-                        <div key={carid}>
-                            <p>name: {car.name}</p>
-                            <p>type: {car.type}</p>
-                        </div>
-                    );
-                })}
 
-                <Forms addCars={this.addCars} /><br />
+    render() {
+        // let {cars} = this.props;
+        let { carList } = this.state
+        return (
+            <div className="container">
+                <div className="content">
+                    <h1 className="header">Cars List</h1>
+                </div>
+
+
+                <Row className="container-fluid">
+                    {carList.map((car, carid) => {
+                        return (
+                            <div className="col-sm-3 card" key={carid}>
+                                <p> <strong>Name:</strong>  {car.name}</p>
+                                <p><strong>Type:</strong> {car.type}</p>
+                            </div>
+                        );
+                    })}
+                </Row>
+
+
+                <Forms addCars={this.addCars} />
 
             </div>
 
