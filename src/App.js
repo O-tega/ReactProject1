@@ -10,10 +10,13 @@ import Home from './components/Home'
 
 
 
-
 class App extends React.Component{
   constructor(){
     super();
+  }
+
+  componentDidMount(){
+    axios.get('https://jsonplaceholder.typicode.com/posts')
   }
 
   render(){
@@ -30,13 +33,17 @@ class App extends React.Component{
           <li className="navBar-item">
             <Link to="phones" className="style"> Update Phones</Link>
           </li>
+          <li className="navBar-item">
+            <Link to="/post" className="style"> Posts</Link>
+          </li>
           </span>
         </ul>
         
         
         <Route path="/" exact component={Home}/>
         <Route path="/cars" component={Cars}/>
-        <Route path="/phones" component={Phones}/>   
+        <Route path="/phones" component={Phones}/> 
+        <Route path="/post" component={Posts}/>  
       </div>
     )
   }
