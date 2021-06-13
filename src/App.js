@@ -10,14 +10,30 @@ import Home from './components/Home'
 
 
 
+
 class App extends React.Component{
-  constructor(){
+  constructor() {
     super();
+    this.state = {
+      posts: [],
+      err: {}
+    }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => {
+        console.log(response)
+        this.setState({
+          posts: response.data
+        })
+      }).catch((err) => {
+        this.setState({
+          err: err.response
+        })
+      });
   }
+
 
   render(){
     return(
@@ -43,7 +59,11 @@ class App extends React.Component{
         <Route path="/" exact component={Home}/>
         <Route path="/cars" component={Cars}/>
         <Route path="/phones" component={Phones}/> 
-        <Route path="/post" component={Posts}/>  
+        <Route
+         path="/post"
+         render={(routerProps)=>(
+           <Posts {...routerProps} posts={this.state.posts}/>
+         )}/>  
       </div>
     )
   }
