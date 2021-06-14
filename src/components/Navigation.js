@@ -21,7 +21,7 @@ class Navigation extends React.Component{
         let{posts} = this.props;
         return(
             <div>
-                <Navbar bg="light" expand="lg">
+                <Navbar bg="light" expand="md">
                     <Navbar.Brand as={Link} to="/">
                         E-commerce Shop
                     </Navbar.Brand>
@@ -29,12 +29,12 @@ class Navigation extends React.Component{
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link as={Link} to="cars">Cars</Nav.Link>
-                        <Nav.Link as={Link} to="phones">Phones</Nav.Link>
-                        <Nav.Link as={Link} to="post">Post</Nav.Link>
+                        <Nav.Link as={Link} to="/cars">Cars</Nav.Link>
+                        <Nav.Link as={Link} to="/phones">Phones</Nav.Link>
+                        <Nav.Link as={Link} to="/post">Post</Nav.Link>
                     <NavDropdown title="Update" id="basic-nav-dropdown">
-                        <NavDropdown.Item as={Link} to="/form">Car</NavDropdown.Item>
-                        <NavDropdown.Item as={Link} to="phoneform">Phone</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/cars/form">Car</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/phones/phoneform">Phone</NavDropdown.Item>
                     </NavDropdown>
                         </Nav>
                     {/* <Form inline>
@@ -45,12 +45,12 @@ class Navigation extends React.Component{
                 </Navbar>
 
 
-                <Route path="/" exact component={Home}/>
-                <Route path="/cars" exact component={Cars}/>
-                <Route path="/phones" exact component={Phones}/>
-                <Route path="/form" exact component={Forms}/>
-                <Route path="/phoneform" exact component={PhoneForm}/>
-                <Route path="/post" component={Posts}/>
+                {/* <Route path="/" exact component={Home}/> */}
+                {/* <Route path="/cars"  component={Cars}/> */}
+                {/* <Route path="/phones" component={Phones}/> */}
+                {/* <Route path="/form" component={Forms}/> */}
+                <Route path="/phoneform" component={PhoneForm}/>
+                {/* <Route path="/post" component={Posts}/> */}
          
             </div>
         )

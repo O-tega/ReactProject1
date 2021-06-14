@@ -40,14 +40,7 @@ class PhoneForm extends React.Component{
                  className="form-control"/>
 
                 <FormElement type="text"
-                 placeholder = "what is the date of delivery"
-                 value={this.state.date}
-                 name="date"
-                 onChange={this.handleChange}
-                 className="form-control"/>
-
-                <FormElement type="text"
-                 placeholder = "on what date"
+                 placeholder = "Enter Price"
                  value={this.state.price}
                  name="price"
                  onChange={this.handleChange}

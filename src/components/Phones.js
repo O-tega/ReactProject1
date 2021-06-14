@@ -12,12 +12,7 @@ class Phones extends React.Component {
         }
 
     }
-    addPhones = (incomingState) => {
-        let newPhones = { ...incomingState }
-        this.setState({
-            phonesList: [...this.state.phonesList, newPhones]
-        })
-    }
+  
 
     render(){
         let {phones} = this.props;
@@ -34,7 +29,6 @@ class Phones extends React.Component {
                        <div key={phoneid} className="col-md-3 card">
                            <span className="adjust"><strong>Name:</strong> {phone.name}</span>
                            <span className="adjust"><strong>Quantity:</strong> {phone.quantity}</span>
-                           <span className="adjust"><strong>Date:</strong> {phone.date}</span>
                            <span className="adjust"><strong>Price:</strong> {phone.price}</span>
                            <br/>
                        </div>
@@ -43,7 +37,6 @@ class Phones extends React.Component {
                 </Row>
 
 
-                <PhoneForm newPhones={this.addPhones} />
             </div>
         )
     }
