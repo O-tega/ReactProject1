@@ -2,11 +2,12 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import axios from 'axios'
-import {Link, Route} from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
 import Posts from './components/Posts'
 import Cars from './components/Cars'
 import Phones from './components/Phones'
 import Home from './components/Home'
+import Navigation from './components/Navigation'
 
 
 
@@ -15,6 +16,41 @@ class App extends React.Component{
   constructor() {
     super();
     this.state = {
+      carList: [
+        {
+          name: 'Rolls Royce',
+          type: 'Sweptail'
+        },
+        {
+          name: 'Mercedes Benz',
+          type: 'G33',
+        },
+        {
+          name: 'Bentley',
+          type: 'Bentayga',
+        },
+      ],
+      phonesList: [
+        {
+          name: 'Samsung A11',
+          quantity: 34,
+          date: 'wed May 19 2021 2:08pm',
+          price: '$50'
+        },
+        {
+          name: 'Itel p33 pro',
+          quantity: 100,
+          date: 'wed May 20 2021 8:00am',
+          price: '$25'
+        },
+        {
+          name: 'Iphone 12 S pro',
+          quantity: 13,
+          date: 'wed May 1 2021 8:00am',
+          price: '$900',
+        }
+      ],
+
       posts: [],
       err: {}
     }
@@ -38,32 +74,17 @@ class App extends React.Component{
   render(){
     return(
       <div>
-        <ul className="navBar bg-light">
-          <li className="navBar-item">
-            <Link to="/" className="btn btn-primary btn-sm">Home</Link>
-          </li>
-          <span>
-          <li className="navBar-item">
-            <Link to="/cars" className="style">Update cars</Link>
-          </li>
-          <li className="navBar-item">
-            <Link to="phones" className="style"> Update Phones</Link>
-          </li>
-          <li className="navBar-item">
-            <Link to="/post" className="style"> Posts</Link>
-          </li>
-          </span>
-        </ul>
-        
-        
+        <Navigation />
         <Route path="/" exact component={Home}/>
-        <Route path="/cars" component={Cars}/>
-        <Route path="/phones" component={Phones}/> 
-        <Route
-         path="/post"
-         render={(routerProps)=>(
-           <Posts {...routerProps} posts={this.state.posts}/>
-         )}/>  
+        <Route path="/cars"
+         render={(routerProps)=> 
+         <Cars {...routerProps} cars={this.state.carList}/>
+         }/>
+         <Route path="/phones"
+          render={(routerProps)=>
+            (<Phones {...routerProps} phones={this.state.phonesList}/>)
+          }/>
+        {/* <Posts posts={this.state.posts}/>  */}
       </div>
     )
   }

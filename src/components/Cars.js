@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, CarouselItem } from 'react-bootstrap'
 import Forms from './Forms'
 
 
@@ -8,58 +8,61 @@ class Cars extends React.Component {
     constructor() {
         super();
         this.state = {
-            carList: [
-                {
-                    name: 'Rolls Royce',
-                    type: 'Sweptail'
-                },
-                {
-                    name: 'Mercedes Benz',
-                    type: 'G33',
-                },
-                {
-                    name: 'Bentley',
-                    type: 'Bentayga',
-                },
-            ]
 
 
         }
     }
-    addCars = (incomingState) => {
-        let newCars = { ...incomingState }
-        console.log(newCars)
-        this.setState({
-            carList: [...this.state.carList, newCars]
-        })
+    // addCars = (incomingState) => {
+    //     let newCars = { ...incomingState }
+    //     console.log(newCars)
+    //     this.setState({
+    //         carList: [...this.state.carList, newCars]
+    //     })
 
-    }
+    // }
 
     render() {
-        // let {cars} = this.props;
-        let { carList } = this.state
+        let {cars} = this.props;
+        // let { carList } = this.state
+        console.log(cars)
+        // console.log(carList)
+        // console.log(this.props)
+        // const { cars }=this.props;
+        // console.log(cars)
+            const allcars = cars.map(({name, type, id}) => {
+                return (
+                    <div key={id}>
+                        <p> <strong>Name:</strong>  {name}</p>
+                        <p><strong>Type:</strong> {type}</p>
+                    </div>)
+            })
+        
         return (
-            <div className="container">
-                <div className="content">
-                    <h1 className="header">Cars List</h1>
-                </div>
 
-
-                <Row className="container-fluid">
-                    {carList.map((car, carid) => {
-                        return (
-                            <div className="col-sm-3 card" key={carid}>
-                                <p> <strong>Name:</strong>  {car.name}</p>
-                                <p><strong>Type:</strong> {car.type}</p>
-                            </div>
-                        );
-                    })}
-                </Row>
-
-
-                <Forms addCars={this.addCars} />
-
+            <div>
+                <p>{allcars}</p>
             </div>
+            // <div className="container">
+            //     <div className="content">
+            //         <h1 className="header">Cars List</h1>
+            //     </div>
+
+
+            //     <Row className="container-fluid">
+            //         {cars.map((car) => {
+            //             return (
+            //                 <div className="col-sm-3 card" key={car.id}>
+            //                     <p> <strong>Name:</strong>  {car.name}</p>
+            //                     <p><strong>Type:</strong> {car.type}</p>
+            //                 </div>
+            //             );
+            //         })}
+            //     </Row>
+
+
+            //     <Forms addCars={this.addCars} />
+
+            // </div>
 
         );
 
