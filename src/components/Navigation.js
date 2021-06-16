@@ -49,7 +49,7 @@ class Navigation extends React.Component{
                 {/* <Route path="/cars"  component={Cars}/> */}
                 {/* <Route path="/phones" component={Phones}/> */}
                 {/* <Route path="/form" component={Forms}/> */}
-                <Route path="/phoneform" component={PhoneForm}/>
+                {/* <Route path="/phoneform" component={PhoneForm}/> */}
                 {/* <Route path="/post" component={Posts}/> */}
          
             </div>

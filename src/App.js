@@ -11,6 +11,7 @@ import Home from './components/Home'
 import Navigation from './components/Navigation'
 import Forms from './components/Forms'
 import PhoneForm from './components/PhoneForm'
+import Description from './components/Description'
 
 
 
@@ -21,14 +22,17 @@ class App extends React.Component{
     this.state = {
       carList: [
         {
+          id: 1,
           name: 'Rolls Royce',
           type: 'Sweptail'
         },
         {
+          id: 2,
           name: 'Mercedes Benz',
           type: 'G33',
         },
         {
+          id: 3,
           name: 'Bentley',
           type: 'Bentayga',
         },
@@ -55,11 +59,13 @@ class App extends React.Component{
       ],
 
       posts: [],
-      err: {}
+      err: {},
     }
   }
-      addCars = (incomingState) => {
-        let newCars = { ...incomingState }
+      addCars = (incomingState, idn) => {
+        const{carList}=this.state
+        let newId =  carList.length + 1;
+        let newCars = { id:newId, ...incomingState }
         console.log(newCars)
         this.setState({
             carList: [...this.state.carList, newCars]
@@ -73,19 +79,19 @@ class App extends React.Component{
       phonesList: [...this.state.phonesList, newPhones]
     })
   }
-//   componentDidMount() {
-//     axios.get('https://jsonplaceholder.typicode.com/posts')
-//       .then((response) => {
-//         console.log(response)
-//         this.setState({
-//           posts: response.data
-//         })
-//       }).catch((err) => {
-//         this.setState({
-//           err: err.response
-//         })
-//       });
-//   }
+  componentDidMount() {
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => {
+        console.log(response)
+        this.setState({
+          posts: response.data
+        })
+      }).catch((err) => {
+        this.setState({
+          err: err.response
+        })
+      });
+  }
 
 
   render(){
@@ -105,10 +111,13 @@ class App extends React.Component{
         <Route path="/cars/form"
         render={routerProps=>
         <Forms {...routerProps} addCars={this.addCars}/>}/>
-        {/* <PhoneForm newPhones={this.addPhones} /> */}
         <Route path="/phones/phoneform"
         render={routerProps=>
         <PhoneForm {...routerProps} newPhones={this.addPhones}/>}/>
+        {/* <Route path="/cars/:id"
+        render={routerProps=>
+        <Description {...routerProps} descr={this.state.carList}/>}/> */}
+
 
       </div>
     )
